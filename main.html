@@ -16,13 +16,15 @@
 <body class="text-center bg-light d-flex align-items-center" style="height: 50vh">
     <main class="w-100 m-auto" style="max-width: 430px">
         <div class="container">
-            <h2 class="text-center mb-4">قائمة المهام</h2>
+            <h2 class="text-center mb-4 fs-1">قائمة المهام</h2>
             <div class="input-group mb-3">
                 <input type="text" id="taskInput" class="form-control" placeholder="أدخل مهمة جديدة">
-                <button class="btn btn-primary" id="addTask">أضف</button>
+                <button class="btn btn-danger" id="addTask">أضف</button>
             </div>
             <ul id="taskList" class="list-group"></ul>
         </div>
+
+        <button id="logout" class="btn btn-danger w-10 my-5 py-2">Log out</button>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -65,6 +67,12 @@
     $(this).closest("li").remove();
     saveTasks();
   });
+
+  $('#logout').on('click', function (e) {
+        e.preventDefault(); // منع الإرسال التلقائي
+        alert('تم تسجيل الخروج بنجاح');
+        window.location.href = 'index.html';
+    });
 });
     </script>
 </body>
