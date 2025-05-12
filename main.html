@@ -1,80 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .completed {
-            text-decoration: line-through;
-            color: gray;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="text-center bg-light d-flex align-items-center" style="height: 50vh">
+<body class="text-center d-flex align-items-center" style="height: 100vh">
     <main class="w-100 m-auto" style="max-width: 430px">
         <div class="container">
-            <h2 class="text-center mb-4 fs-1">قائمة المهام</h2>
+            <h2 class="text-center mb-4 fs-1">Tasks List</h2>
             <div class="input-group mb-3">
-                <input type="text" id="taskInput" class="form-control" placeholder="أدخل مهمة جديدة">
-                <button class="btn btn-danger" id="addTask">أضف</button>
+                <input type="text" id="taskInput" class="form-control" placeholder="add new task">
+                <button class="btn btn-danger" id="addTask">add</button>
             </div>
             <ul id="taskList" class="list-group"></ul>
         </div>
 
         <button id="logout" class="btn btn-danger w-10 my-5 py-2">Log out</button>
     </main>
+    <div class="theme-toggle">
+    <div class="form-check form-switch">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-sun"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+      </svg>
+      <input class="form-check-input p-2" type="checkbox" role="switch" id="themeSwitch" checked/>
+    </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script >
-        $(document).ready(function () {
-  function saveTasks() {
-    localStorage.setItem("tasks", $("#taskList").html());
-  }
-
-  function loadTasks() {
-    $("#taskList").html(localStorage.getItem("tasks"));
-  }
-
-  loadTasks();
-
-  $("#addTask").click(function () {
-    const taskText = $("#taskInput").val().trim();
-    if (taskText) {
-      const taskItem = `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="task-text">${taskText}</span>
-          <div>
-            <button class="btn btn-success btn-sm me-2 complete-btn">✓</button>
-            <button class="btn btn-danger btn-sm delete-btn">✗</button>
-          </div>
-        </li>
-      `;
-      $("#taskList").append(taskItem);
-      $("#taskInput").val("");
-      saveTasks();
-    }
-  });
-
-  $("#taskList").on("click", ".complete-btn", function () {
-    $(this).closest("li").find(".task-text").toggleClass("completed");
-    saveTasks();
-  });
-
-  $("#taskList").on("click", ".delete-btn", function () {
-    $(this).closest("li").remove();
-    saveTasks();
-  });
-
-  $('#logout').on('click', function (e) {
-        e.preventDefault(); // منع الإرسال التلقائي
-        alert('تم تسجيل الخروج بنجاح');
-        window.location.href = 'index.html';
-    });
-});
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
