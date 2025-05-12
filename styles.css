@@ -1,0 +1,102 @@
+/* Base transitions and hover effects (your existing styles) */
+#to-do-li,
+input,
+button {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+input:hover,
+button:hover,
+#to-do-li:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+input:active,
+button:active,
+#to-do-li:active {
+    transform: scale(0.98);
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* New styles for scrollable tasks */
+.task-text-container {
+    max-width: 70%; /* Adjust based on your preference */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding: 0.25rem 0;
+    cursor: grab;
+}
+
+/* Custom scrollbar styling */
+.task-text-container::-webkit-scrollbar {
+    height: 3px;
+}
+
+.task-text-container::-webkit-scrollbar-thumb {
+    background-color: #dc3545; /* Matches your danger color */
+    border-radius: 3px;
+}
+
+.task-text-container::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* List item styling */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1.25rem;
+}
+
+/* Button styling */
+.complete-btn, 
+.delete-btn {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .task-text-container {
+        max-width: 60%; /* More space for text on small screens */
+    }
+    
+    .list-group-item {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Dark mode compatibility */
+[data-bs-theme="dark"] .task-text-container::-webkit-scrollbar-thumb {
+    background-color: #bb2d3b; /* Slightly lighter red for dark mode */
+}
+
+[data-bs-theme="dark"] .task-text-container::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .completed {
+    color: #adb5bd;
+}
