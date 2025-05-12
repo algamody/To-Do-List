@@ -35,9 +35,5 @@ $(document).ready(function () {
     });
 
 
-    $('#log-out').on('click', function (e) {
-        e.preventDefault(); // منع الإرسال التلقائي
-        alert('تم تسجيل الخروج بنجاح');
-        window.location.href = 'index.html';
-    });
+    
 });
